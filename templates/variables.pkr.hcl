@@ -12,7 +12,8 @@ variable "env_vsphere_username" {
 }
 variable "env_vsphere_password" {
   type        = string
-  sensitive   = true  description = "Password for vSphere_User"
+  sensitive   = true
+  description = "Password for vSphere_User"
   default     = ""
 }
 variable "default_insecure_connection" {
