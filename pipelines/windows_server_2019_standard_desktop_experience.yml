@@ -1,0 +1,53 @@
+resources:
+  repositories:
+    - repository: Packer
+      type: github
+      endpoint: patrykpodlas
+      name: patrykpodlas/Packer
+pr: none
+trigger: none
+jobs:
+  - job: packer_build_windows_server_2019_standard_desktop_experience
+    pool:
+      name: vSphere
+    timeoutInMinutes: 120
+    steps:
+      - checkout: self
+      - task: AzureKeyVault@2
+        displayName: Aquiring Secrets
+        inputs:
+          azureSubscription: 'Packer'
+          KeyVaultName: 'kv-ppodlas-packer'
+          SecretsFilter: 'env-vsphere-username, env-vsphere-password, env-communicator-username, env-communicator-password'
+          RunAsPreJob: false
+      - task: PowerShell@2
+        name: templatedeployment
+        displayName: Template Deployment
+        inputs:
+          targetType: "inline"
+          script: |
+            #This script executes on the agent where it's being run.
+
+            $env:PKR_VAR_env_vsphere_username = "$(env-vsphere-username)"
+            $env:PKR_VAR_env_vsphere_password = "$(env-vsphere-password)"
+            $env:PKR_VAR_env_communicator_username = "$(env-communicator-username)"
+            $env:PKR_VAR_env_communicator_password = "$(env-communicator-password)"
+
+              #Change to Packer working directory.
+              Set-Location $(System.DefaultWorkingDirectory)\templates\
+
+              #Specify the Build Details.
+              $BuildDate = get-date -f yyyyMMdd-HHmm
+              $LogPath = "E:\build-logs\packer-build-log-$(BuildVersion)-$BuildDate.txt"
+              #Log path
+              Write-Host "##vso[task.setvariable variable=LogPath;]$LogPath"
+
+              #Enable and set logging location
+              $env:PACKER_LOG = 1
+              $env:PACKER_LOG_PATH = $LogPath
+
+              #Initialise template.
+              packer init build.pkr.hcl
+
+              #Build template!
+              packer build --force --only vsphere-iso.windows_server_2019_standard_desktop_experience -var-file="variable_overwrites/windows_server_2019.pkrvars.hcl" .
