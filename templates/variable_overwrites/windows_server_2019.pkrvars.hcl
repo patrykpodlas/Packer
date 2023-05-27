@@ -24,6 +24,3 @@ vm_guest_os_type               = "windows9Server64Guest"
 //Media Settings
 vm_inst_os_iso_path      = "[DS-LK-ESXI-001-HashiCorp-Media] /media/windows-server-2019.iso"
 vm_inst_vmtools_iso_path = "[DS-LK-ESXI-001-HashiCorp-Media] /media/vmtools/windows.iso"
-vm_inst_script_files     = ["scripts/windows/os-configuration.ps1"]
-vm_inst_package_install  = ["scripts/windows/package-installations.ps1"]
-vm_inst_cleanup          = ["scripts/windows/cleanup.ps1"]
