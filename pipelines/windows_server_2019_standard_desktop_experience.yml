@@ -6,6 +6,8 @@ resources:
       name: patrykpodlas/Packer
 pr: none
 trigger: none
+variables:
+- group: Packer
 jobs:
   - job: packer_build_windows_server_2019_standard_desktop_experience
     pool:
@@ -16,11 +18,6 @@ jobs:
       - task: PowerShell@2
         name: templatedeployment
         displayName: Template Deployment
-        env: 
-          env-vsphere-username: $(env-vsphere-username)
-          env-vsphere-password: $(env-vsphere-password)
-          env-communicator-username: $(env-communicator-username)
-          env-communicator-password: $(env-communicator-password)
         inputs:
           targetType: "inline"
           script: |
