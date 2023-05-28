@@ -1,4 +1,4 @@
-$TranscriptPath = "C:\TEMP\initial-configuration-log.txt"
+$TranscriptPath = "C:\TEMP\enable_winrm.txt"
 Write-Output "Starting PowerShell transcript to $($TrascriptPath)"
 Start-Transcript -Path $TranscriptPath -Append -Force
 
