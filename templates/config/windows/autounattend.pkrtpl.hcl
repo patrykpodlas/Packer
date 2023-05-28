@@ -133,7 +133,7 @@
                     <Description>Install VMware Tools</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\initial-configuration.ps1</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File D:\enable_winrm.ps1</CommandLine>
                     <Order>99</Order>
                     <Description>OS Configuration</Description>
                 </SynchronousCommand>
