@@ -128,12 +128,12 @@
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c e:\setup64 /s /v "/qb REBOOT=R"</CommandLine>
+                    <CommandLine>cmd.exe /c E:\setup64 /s /v "/qb REBOOT=R"</CommandLine>
                     <Order>3</Order>
                     <Description>Install VMware Tools</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File e:\enable_winrm.ps1</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File F:\enable_winrm.ps1</CommandLine>
                     <Description>Enable WinRM</Description>
                     <Order>4</Order>
                 </SynchronousCommand>
