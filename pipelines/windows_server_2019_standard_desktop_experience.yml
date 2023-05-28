@@ -13,16 +13,14 @@ jobs:
     timeoutInMinutes: 120
     steps:
       - checkout: self
-      - task: AzureKeyVault@2
-        displayName: Aquiring Secrets
-        inputs:
-          azureSubscription: 'Packer'
-          KeyVaultName: 'kv-ppodlas-packer'
-          SecretsFilter: 'env-vsphere-username, env-vsphere-password, env-communicator-username, env-communicator-password'
-          RunAsPreJob: false
       - task: PowerShell@2
         name: templatedeployment
         displayName: Template Deployment
+        env: 
+          env-vsphere-username: $(env-vsphere-username)
+          env-vsphere-password: $(env-vsphere-password)
+          env-communicator-username: $(env-communicator-username)
+          env-communicator-password: $(env-communicator-password)
         inputs:
           targetType: "inline"
           script: |
