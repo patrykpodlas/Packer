@@ -39,9 +39,10 @@ source "vsphere-iso" "windows_server_2019_standard_desktop_experience" {
 
   // Media Settings
   iso_paths = [var.vm_inst_os_iso_path, var.vm_inst_vmtools_iso_path]
-    floppy_files = ["${path.cwd}/scripts/${var.vm_guest_os_family}/enable_winrm.ps1"
+  cd_files = [
+    "${path.cwd}/scripts/${var.vm_guest_os_family}/enable_winrm.ps1"
   ]
-  floppy_content = {
+  cd_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/config/windows/autounattend.pkrtpl.hcl", {
       env_communicator_username = var.env_communicator_username
       env_communicator_password = var.env_communicator_password
@@ -53,6 +54,7 @@ source "vsphere-iso" "windows_server_2019_standard_desktop_experience" {
       vm_guest_os_keyboard      = var.vm_guest_os_keyboard
       vm_guest_os_timezone      = var.vm_guest_os_timezone
     })
+
   }
 
   http_directory = var.vm_inst_http_directory
