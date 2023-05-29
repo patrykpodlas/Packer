@@ -93,8 +93,8 @@
                     <WillShowUI>OnError</WillShowUI>
                     <Key>${vm_inst_os_kms_key}</Key>
                 </ProductKey>
-                <FullName>Quilter plc</FullName>
-                <Organization>GTS</Organization>
+                <FullName>Underwood Vision</FullName>
+                <Organization></Organization>
             </UserData>
         </component>
     </settings>
