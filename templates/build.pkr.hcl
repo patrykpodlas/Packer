@@ -80,4 +80,14 @@ source "vsphere-iso" "windows_server_2019_standard_desktop_experience" {
 # windows_server_2019_standard_desktop_experience
 build {
   sources = ["source.vsphere-iso.windows_server_2019_standard_desktop_experience"]
+  provisioner "powershell" {
+    inline = [
+      "Get-Content -Path C:/TEMP/enable_winrm.txt"
+    ]
+  }
+  provisioner "powershell" {
+    scripts = [
+      "scripts/windows/shutdown.ps1"
+    ]
+  }
 }

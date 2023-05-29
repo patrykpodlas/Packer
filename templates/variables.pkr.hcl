@@ -132,8 +132,8 @@ variable "default_shutdown_timeout" {
 }
 variable "default_shutdown_command" {
   type        = string
-  default     = "shutdown /s /t 10 /f /d p:4:1 /c \"Shutdown by Packer\""
-  description = "Default Shutdown Command."
+  default     = "C:\\Windows\\system32\\sysprep\\sysprep.exe /quiet /generalize /oobe /shutdown\""
+  description = "Shutdown command."
 }
 
 //Media Settings
