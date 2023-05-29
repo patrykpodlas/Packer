@@ -1,5 +1,5 @@
 $TranscriptPath = "C:\TEMP\enable_winrm.txt"
-Write-Output "Starting PowerShell transcript to $($TrascriptPath)"
+Write-Output "---Starting PowerShell transcript to $($TrascriptPath)."
 Start-Transcript -Path $TranscriptPath -Append -Force
 
 Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Private
@@ -44,6 +44,4 @@ Restart-Service WinRM
 Test-WSMan
 Write-Output "---WinRM Started."
 Write-Output "Stopping PowerShell transcript."
-Stop-Transcript
-
 Stop-Transcript
