@@ -19,6 +19,8 @@ source "vsphere-iso" "windows_server_2019_standard_desktop_experience" {
   firmware      = var.default_firmware
   vm_version    = var.default_vm_version
   guest_os_type = var.vm_guest_os_type
+  remove_cdrom  = var.default_remove_cdrom
+
   network_adapters {
     network      = var.default_vsphere_portgroup_name
     network_card = var.default_network_card
@@ -28,14 +30,12 @@ source "vsphere-iso" "windows_server_2019_standard_desktop_experience" {
     disk_size             = var.default_disk_size
     disk_thin_provisioned = var.default_disk_thin_provisioned
   }
-  remove_cdrom = var.default_remove_cdrom
 
   // Boot & Shutdown Settings
   boot_command     = var.default_boot_command
   boot_order       = var.default_boot_order
   boot_wait        = var.default_boot_wait
   shutdown_timeout = var.default_shutdown_timeout
-  shutdown_command = var.default_shutdown_command
 
   // Media Settings
   iso_paths = [var.vm_inst_os_iso_path, var.vm_inst_vmtools_iso_path]

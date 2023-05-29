@@ -273,7 +273,7 @@ variable "default_content_library_destination" {
 }
 variable "default_library_vm_destroy" {
   type        = bool
-  default     = false
+  default     = true
   description = "Destroys the original VM template from the inventory once its has been uploaded to the content library."
 }
 variable "default_ovf" {
