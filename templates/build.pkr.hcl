@@ -21,7 +21,8 @@ source "vsphere-iso" "windows_server_2019_standard_desktop_experience" {
   guest_os_type = var.vm_guest_os_type
   remove_cdrom  = var.default_remove_cdrom
 
-  network_adapters {    network      = var.default_vsphere_portgroup_name
+  network_adapters {
+    network      = var.default_vsphere_portgroup_name
     network_card = var.default_network_card
   }
   disk_controller_type = var.default_disk_controller_type
@@ -126,7 +127,8 @@ source "vsphere-iso" "windows_server_2019_standard_core" {
   guest_os_type = var.vm_guest_os_type
   remove_cdrom  = var.default_remove_cdrom
 
-  network_adapters {    network      = var.default_vsphere_portgroup_name
+  network_adapters {
+    network      = var.default_vsphere_portgroup_name
     network_card = var.default_network_card
   }
   disk_controller_type = var.default_disk_controller_type
